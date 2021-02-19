@@ -23,5 +23,5 @@ class Picture(models.Model):
         'id': self.id,
         'title': self.title,
         'picture': self.picture,
-        'description': self.ripe
+        'description': self.description
     }

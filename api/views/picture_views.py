@@ -8,11 +8,13 @@ from django.contrib.auth import get_user, authenticate, login, logout
 from django.middleware.csrf import get_token
 
 from ..models.picture import Picture
-from ..serializers import PictureSerializer, UserSerializer
+from ..serializers import PictureSerializer, UserSerializer, PictureAllSerializer
 
 # Create your views here.
 class PicturesAll(generics.ListCreateAPIView):
-    serializer_class = PictureSerializer
+    authentication_classes = ()
+    permission_classes = ()
+    serializer_class = PictureAllSerializer
     def get(self, request):
         """Index All request"""
         pictures = Picture.objects.all()
