@@ -49,7 +49,7 @@ class Pictures(generics.ListCreateAPIView):
         return Response(picture.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes=(IsAuthenticated,)
+    permission_classes=()
     def get(self, request, pk):
         """Show request"""
         # Locate the picture to show
@@ -59,9 +59,7 @@ class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
         # Run the data through the serializer so it's formatted
         data = serializer.data
         # Only want to show owned pictures?
-        if not request.user.id == picture.owner.id:
-            raise PermissionDenied('Unauthorized, you do not own this picture')
-
+        
         return Response(data)
 
     def delete(self, request, pk):

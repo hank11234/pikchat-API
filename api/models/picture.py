@@ -6,7 +6,7 @@ class Picture(models.Model):
   # define fields
   # https://docs.djangoproject.com/en/3.0/ref/models/fields/
   title = models.CharField(max_length=100, blank=True)
-  picture = models.CharField(max_length=100000)
+  picture = models.CharField(max_length=100000, blank=True)
   description = models.CharField(max_length=100000, blank=True)
   owner = models.ForeignKey(
       get_user_model(),
