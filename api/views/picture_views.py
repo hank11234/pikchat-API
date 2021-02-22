@@ -8,7 +8,7 @@ from django.contrib.auth import get_user, authenticate, login, logout
 from django.middleware.csrf import get_token
 
 from ..models.picture import Picture
-from ..serializers import PictureSerializer, UserSerializer, PictureAllSerializer
+from ..serializers import PictureSerializer, PictureAllSerializer
 
 # Create your views here.
 class PicturesAll(generics.ListCreateAPIView):

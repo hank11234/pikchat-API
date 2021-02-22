@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from .models.picture import Picture
+from .models.comment import Comment
 from .models.user import User
 
 class PictureSerializer(serializers.ModelSerializer):
@@ -48,6 +49,8 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 class PictureAllSerializer(PictureSerializer):
     owner = serializers.StringRelatedField()
-    # class Meta:
-    #     model = Picture
-    #     fields = ('id', 'title', 'picture', 'description')
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('id', 'comment', 'owner', 'picture_id')
