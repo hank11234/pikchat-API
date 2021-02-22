@@ -9,11 +9,6 @@ class PictureSerializer(serializers.ModelSerializer):
         model = Picture
         fields = ('id', 'title', 'picture', 'description', 'owner')
 
-class PictureAllSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Picture
-        fields = ('id', 'title', 'picture', 'description')
-
 class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation
     # The login serializer also inherits from this serializer
@@ -50,3 +45,9 @@ class ChangePasswordSerializer(serializers.Serializer):
     model = get_user_model()
     old = serializers.CharField(required=True)
     new = serializers.CharField(required=True)
+
+class PictureAllSerializer(PictureSerializer):
+    owner = serializers.StringRelatedField()
+    # class Meta:
+    #     model = Picture
+    #     fields = ('id', 'title', 'picture', 'description')

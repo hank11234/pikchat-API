@@ -18,7 +18,7 @@ class PicturesAll(generics.ListCreateAPIView):
     def get(self, request):
         """Index All request"""
         pictures = Picture.objects.all()
-        data = PictureSerializer(pictures, many=True).data
+        data = PictureAllSerializer(pictures, many=True).data
         return Response({ 'pictures': data })
 
 class Pictures(generics.ListCreateAPIView):
