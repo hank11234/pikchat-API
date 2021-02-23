@@ -11,7 +11,7 @@ from ..models.comment import Comment
 from ..serializers import CommentSerializer
 
 class Comments(generics.ListCreateAPIView):
-    permission_classes=(IsAuthenticated,)
+    permission_classes=()
     serializer_class = CommentSerializer
     def get(self, request):
         """Index request"""
