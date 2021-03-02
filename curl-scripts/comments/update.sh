@@ -5,8 +5,7 @@ curl "http://localhost:8000/comments/${ID}/" \
   --header "Authorization: Token ${TOKEN}" \
   --data '{
     "comment": {
-      "comment": "'"${COMMENT}"'",
-      "picture_id": "'"${PICTUREID}"'"
+      "comment": "'"${COMMENT}"'"
     }
   }'
 

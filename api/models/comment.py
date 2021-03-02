@@ -8,7 +8,7 @@ class Comment(models.Model):
       related_name='comments',
       on_delete=models.CASCADE
   )
-  picture_id = models.ForeignKey('Picture', on_delete=models.CASCADE)
+  pictureId = models.ForeignKey('Picture', on_delete=models.CASCADE)
 
   def __str__(self):
         return self.comment

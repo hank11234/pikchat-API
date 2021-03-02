@@ -6,7 +6,7 @@ curl "http://localhost:8000/comments/" \
   --data '{
     "comment": {
       "comment": "'"${COMMENT}"'",
-      "picture_id": "'"${PICTUREID}"'"
+      "pictureId": "'"${PICTUREID}"'"
     }
   }'
 

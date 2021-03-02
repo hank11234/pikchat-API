@@ -8,7 +8,7 @@ from django.contrib.auth import get_user, authenticate, login, logout
 from django.middleware.csrf import get_token
 
 from ..models.comment import Comment
-from ..serializers import CommentSerializer
+from ..serializers import CommentSerializer, CommentEditSerializer
 
 class Comments(generics.ListCreateAPIView):
     permission_classes=()
@@ -36,6 +36,17 @@ class Comments(generics.ListCreateAPIView):
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes=()
+    def get(self, request, pk):
+        """Show request"""
+        # Locate the comment to show
+        comment = get_object_or_404(Comment, pk=pk)
+        serializer = CommentSerializer(comment)
+        
+        # Run the data through the serializer so it's formatted
+        data = serializer.data
+        
+        return Response(data)
+
     def delete(self, request, pk):
         """Delete request"""
         # Locate comment to delete
@@ -66,7 +77,7 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
         # Add owner to data object now that we know this user owns the resource
         request.data['comment']['owner'] = request.user.id
         # Validate updates with serializer
-        data = CommentSerializer(comment, data=request.data['comment'])
+        data = CommentEditSerializer(comment, data=request.data['comment'])
         if data.is_valid():
             # Save & send a 204 no content
             data.save()

@@ -53,4 +53,9 @@ class PictureAllSerializer(PictureSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('id', 'comment', 'owner', 'picture_id')
+        fields = ('id', 'comment', 'owner', 'pictureId')
+
+class CommentEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('id', 'comment', 'owner')
